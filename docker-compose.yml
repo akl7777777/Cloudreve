@@ -1,7 +1,6 @@
-version: "3.8"
 services:
-  redis:
-    container_name: redis
+  redis_cloudreve:
+    container_name: redis_cloudreve
     image: bitnami/redis:latest
     restart: unless-stopped
     environment:
@@ -26,20 +25,15 @@ services:
 
   aria2:
     container_name: aria2
-    image: p3terx/aria2-pro # third party image, please keep notice what you are doing
+    image: p3terx/aria2-pro
     restart: unless-stopped
     environment:
-      - RPC_SECRET=your_aria_rpc_token # aria rpc token, customize your own
+      - RPC_SECRET=your_aria_rpc_token
       - RPC_PORT=6800
     volumes:
       - ./aria2/config:/config
       - temp_data:/data
+
 volumes:
   redis_data:
-    driver: local
   temp_data:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/data
-      o: bind
