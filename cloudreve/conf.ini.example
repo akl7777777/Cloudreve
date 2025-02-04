@@ -7,3 +7,12 @@ HashIDSalt = your_hashid_salt        # 提示用户修改
 [Database]
 Type = sqlite3
 DBFile = /cloudreve/cloudreve.db
+
+[Database]
+Type = mysql
+Host = 127.0.0.1
+Port = 3306
+User = root
+Password = your_password  # 提示用户修改
+Name = cloudreve
+Charset = utf8mb4
